@@ -1,0 +1,165 @@
+body {
+  height: 100vh;
+  margin: 0;
+  /*overflow: hidden;*/
+  font-family: Roboto, sans-serif;
+}
+
+.preamble {
+  background-color: #1f2937;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px;
+}
+
+.beginning {
+  font-size: 48px;
+  font-weight: bolder;
+  color: #f9faf8;
+}
+
+.left-element {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.piece {
+  display: flex;
+  justify-content: flex-start;
+  color: white;
+}
+
+.upper {
+  background: #3882f6;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 8px;
+}
+
+.right-element {
+  width: 500px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+
+.random {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.part {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.card {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid royalblue;
+  border-radius: 8px;
+}
+
+.text {
+  text-align: center;
+}
+
+.quote {
+  background-color: #e5e7eb;
+  color: #1f2937;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inspire {
+  font-size: 36px;
+  font-style: italic;
+  font-weight: lighter;
+  width: 500px;
+}
+
+.signature {
+  width: 800px;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  padding: 80px;
+}
+
+.dialog {
+  width: 800px;
+  padding: 20px;
+  background-color: #3882f6;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.call {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.lower {
+  border: 1px solid white;
+  background: #3882f6;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 8px;
+}
+
+
+.header {
+  background-color: #1f2937;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.footer {
+  background-color: #1f2937;
+  color: #e5e7eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}.section {
+  
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.left-links, .right-links {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.left-links a {
+  font-size: 24px;
+  color: #f9faf8;
+}
+
+.right-links a {
+  font-size: 18px;
+  color: #e5e7eb;
+  margin-right: 30px;
+}
