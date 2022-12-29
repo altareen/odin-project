@@ -4,7 +4,7 @@
 |-------------------------------------------------------------------------------
 |
 | Author:       Alwin Tareen
-| Created:      Oct 08, 2019
+| Created:      Dec 28, 2022
 | Execution:    node rockpaperscissors.js
 |
 | This program implements a Rock-Paper-Scissors game.
