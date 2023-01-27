@@ -11,6 +11,10 @@
 |
 */
 
+let digits = [];
+let current = 0;
+let operation = "";
+
 const add = function(first, second) {
 	return first + second;
 };
@@ -38,9 +42,23 @@ const operate = function(operator, first, second) {
         return multiply(first, second);
     }
     else if (operator == "/") {
-        return divide(first, second);
+        if (second == 0) {
+            return "Error: divide by zero";
+        }
+        else {
+            return divide(first, second);
+        }
     }
-}
+};
+
+const updateDisplay = function() {
+    display.textContent = digits.join("");
+};
+
+// establish the container and display
+const container = document.querySelector("#container");
+container.classList.toggle("grid-container");
+const display = document.querySelector("#display");
 
 // set up the calculator buttons
 const oneButton = document.createElement('button');
@@ -55,6 +73,10 @@ const threeButton = document.createElement('button');
 threeButton.textContent = '3';
 container.appendChild(threeButton);
 
+const addButton = document.createElement('button');
+addButton.textContent = '+';
+container.appendChild(addButton);
+
 const fourButton = document.createElement('button');
 fourButton.textContent = '4';
 container.appendChild(fourButton);
@@ -66,6 +88,10 @@ container.appendChild(fiveButton);
 const sixButton = document.createElement('button');
 sixButton.textContent = '6';
 container.appendChild(sixButton);
+
+const subtractButton = document.createElement('button');
+subtractButton.textContent = '-';
+container.appendChild(subtractButton);
 
 const sevenButton = document.createElement('button');
 sevenButton.textContent = '7';
@@ -79,141 +105,135 @@ const nineButton = document.createElement('button');
 nineButton.textContent = '9';
 container.appendChild(nineButton);
 
-const zeroButton = document.createElement('button');
-zeroButton.textContent = '0';
-container.appendChild(zeroButton);
-
-const addButton = document.createElement('button');
-addButton.textContent = '+';
-container.appendChild(addButton);
-
-const subtractButton = document.createElement('button');
-subtractButton.textContent = '-';
-container.appendChild(subtractButton);
-
 const multiplyButton = document.createElement('button');
 multiplyButton.textContent = '*';
 container.appendChild(multiplyButton);
 
-const divideButton = document.createElement('button');
-divideButton.textContent = '/';
-container.appendChild(divideButton);
-
-const equalsButton = document.createElement('button');
-equalsButton.textContent = '=';
-container.appendChild(equalsButton);
+const zeroButton = document.createElement('button');
+zeroButton.textContent = '0';
+container.appendChild(zeroButton);
 
 const clearButton = document.createElement('button');
 clearButton.textContent = 'Clear';
 container.appendChild(clearButton);
 
+const equalsButton = document.createElement('button');
+equalsButton.textContent = '=';
+container.appendChild(equalsButton);
+
+const divideButton = document.createElement('button');
+divideButton.textContent = '/';
+container.appendChild(divideButton);
+
 // create event listeners for each of the buttons
 oneButton.addEventListener('click', () => {
-    display.textContent = '1';
+    digits.push('1');
+    updateDisplay();
 });
 
 twoButton.addEventListener('click', () => {
-    display.textContent = '2';
+    digits.push('2');
+    updateDisplay();
 });
 
 threeButton.addEventListener('click', () => {
-    display.textContent = '3';
+    digits.push('3');
+    updateDisplay();
 });
 
 fourButton.addEventListener('click', () => {
-    display.textContent = '4';
+    digits.push('4');
+    updateDisplay();
 });
 
 fiveButton.addEventListener('click', () => {
-    display.textContent = '5';
+    digits.push('5');
+    updateDisplay();
 });
 
 sixButton.addEventListener('click', () => {
-    display.textContent = '6';
+    digits.push('6');
+    updateDisplay();
 });
 
 sevenButton.addEventListener('click', () => {
-    display.textContent = '7';
+    digits.push('7');
+    updateDisplay();
 });
 
 eightButton.addEventListener('click', () => {
-    display.textContent = '8';
+    digits.push('8');
+    updateDisplay();
 });
 
 nineButton.addEventListener('click', () => {
-    display.textContent = '9';
+    digits.push('9');
+    updateDisplay();
 });
 
 zeroButton.addEventListener('click', () => {
-    display.textContent = '0';
+    digits.push('0');
+    updateDisplay();
 });
 
 addButton.addEventListener('click', () => {
-    display.textContent = '+';
+    if (current != 0) {
+        current = operate(operation, current, Number(digits.join("")));
+        display.textContent = current;
+    }
+    else {
+        current = Number(digits.join(""));
+    }
+    operation = '+';
+    digits = [];
 });
 
 subtractButton.addEventListener('click', () => {
-    display.textContent = '-';
+    if (current != 0) {
+        current = operate(operation, current, Number(digits.join("")));
+        display.textContent = current;
+    }
+    else {
+        current = Number(digits.join(""));
+    }
+    operation = '-';
+    digits = [];
 });
 
 multiplyButton.addEventListener('click', () => {
-    display.textContent = '*';
+    if (current != 0) {
+        current = operate(operation, current, Number(digits.join("")));
+        display.textContent = current;
+    }
+    else {
+        current = Number(digits.join(""));
+    }
+    operation = '*';
+    digits = [];
 });
 
 divideButton.addEventListener('click', () => {
-    display.textContent = '/';
+    if (current != 0) {
+        current = operate(operation, current, Number(digits.join("")));
+        display.textContent = current;
+    }
+    else {
+        current = Number(digits.join(""));
+    }
+    operation = '/';
+    digits = [];
 });
 
 equalsButton.addEventListener('click', () => {
-    display.textContent = '=';
+    if (current != 0) {
+        display.textContent = operate(operation, current, Number(digits.join("")));
+        current = 0;
+        digits = [];
+    }
 });
 
 clearButton.addEventListener('click', () => {
     display.textContent = '0';
+    current = 0;
+    digits = [];
 });
-
-
-
-/*
-
-const container = document.querySelector("#container");
-container.classList.toggle("grid-container");
-const entry = document.querySelector("#entry");
-
-// set up the start button
-const startButton = document.createElement('button');
-startButton.textContent = 'Start';
-entry.appendChild(startButton);
-
-// create an event listener for the start button
-startButton.addEventListener('click', () => {
-    container.replaceChildren();
-    displayGrid();
-});
-
-function displayGrid() {
-    let num = Number(prompt("Enter the number of squares per side of the grid:"));
-    if (num > 100) {
-        num = 100;
-    }
-
-    let columnQuantity = "";
-    for (let i = 0; i < num; i++) {
-        columnQuantity += "auto ";
-    }
-    container.setAttribute("style", `grid-template-columns: ${columnQuantity}`);
-
-    for (let i = 0; i < num * num; i++) {
-        let square = document.createElement("div");
-        square.classList.toggle("grid-item");
-        square.textContent = `${i}`;
-        container.appendChild(square);
-        
-        square.addEventListener("mouseover", () => {
-            square.classList.remove("grid-item");
-            square.classList.add("grid-element");
-        });
-    }
-}
-
-*/
